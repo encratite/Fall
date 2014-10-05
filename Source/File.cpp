@@ -147,7 +147,7 @@ namespace Fall
 		file.seekEnd();
 		long fileSize = file.getPosition();
 		file.seekBegin();
-		file.read(static_cast<std::size_t>(fileSize));
+		file.read(output, static_cast<std::size_t>(fileSize));
 		file.close();
 	}
 

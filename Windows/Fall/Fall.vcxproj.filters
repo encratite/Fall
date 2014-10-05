@@ -20,9 +20,6 @@
     <ClCompile Include="..\..\Source\Configuration.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\String.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Fall\Exception.hpp">
@@ -32,9 +29,6 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Fall\Configuration.hpp">
-      <Filter>Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Fall\String.hpp">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
