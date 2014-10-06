@@ -8,6 +8,7 @@ namespace Fall
 	class Exception
 	{
 	public:
+		Exception();
 		Exception(std::string const & message);
 
 		std::string const & getMessage() const;

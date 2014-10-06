@@ -12,7 +12,7 @@ do
 	outputFile=$(basename $sourceFile | cut -d. -f1).o
 	object=$objectDirectory/$outputFile
 	echo Building $sourceFile
-	g++ -c $sourceFile -o $object -fPIC -std=c++11 -O3 -I.
+	g++ -c $sourceFile -o $object -fPIC -std=c++11 -Wall -I.
 	if [[ $? != 0 ]]
 	then
 		exit
@@ -20,6 +20,6 @@ do
 	objects="$objects $object"
 done
 
-libraryOutput=$outputDirectory/lib$output.a
-echo Building $libraryOutput
-ar -cq $libraryOutput$objects
+outputPath=$outputDirectory/lib$output.a
+echo Building $outputPath
+ar -cq $outputPath$objects
