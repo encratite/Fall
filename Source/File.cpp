@@ -46,7 +46,7 @@ namespace Fall
 
 		_file = std::fopen(path.c_str(), modeString.c_str());
 		if (_file == nullptr)
-			throw Exception("Failed to open file");
+			throw Exception("Failed to open file \"" + path + "\"");
 
 		if (mode == FileOpenModeCreate)
 			seekBegin();

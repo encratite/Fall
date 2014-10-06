@@ -45,7 +45,14 @@ namespace Fall
 	void Configuration::readConfigurationFile(const std::string & path)
 	{
 		std::string content;
-		File::readFile(path, content);
+		try
+		{
+			File::readFile(path, content);
+		}
+		catch (...)
+		{
+			return;
+		}
 		std::regex regex("^\\s*?(\\w+)(?: (.+?))?\r?$", std::regex_constants::ECMAScript);
 		std::sregex_iterator begin(content.begin(), content.end(), regex);
 		std::sregex_iterator end;
