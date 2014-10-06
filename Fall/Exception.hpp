@@ -9,9 +9,11 @@ namespace Fall
 	{
 	public:
 		Exception();
-		Exception(std::string const & message);
+		Exception(const std::string & message);
 
-		std::string const & getMessage() const;
+		const std::string & getMessage() const;
+
+		const char * what() const;
 
 	protected:
 		std::string _message;

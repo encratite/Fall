@@ -9,7 +9,7 @@ namespace Fall
 	{
 	}
 
-	File::File(std::string const & path, FileOpenMode mode) :
+	File::File(const std::string & path, FileOpenMode mode) :
 		_file(nullptr)
 	{
 		open(path, mode);
@@ -20,7 +20,7 @@ namespace Fall
 		close();
 	}
 
-	void File::open(std::string const & path, FileOpenMode mode)
+	void File::open(const std::string & path, FileOpenMode mode)
 	{
 		std::string modeString;
 		switch (mode)
@@ -101,7 +101,7 @@ namespace Fall
 			closeAndThrow("Failed to write to file");
 	}
 
-	void File::write(std::string const & data)
+	void File::write(const std::string & data)
 	{
 		write(data.c_str(), data.length());
 	}
@@ -141,7 +141,7 @@ namespace Fall
 			throw Exception("No file has been opened");
 	}
 
-	void File::readFile(std::string const & path, std::string & output)
+	void File::readFile(const std::string & path, std::string & output)
 	{
 		File file(path, FileOpenModeRead);
 		file.seekEnd();
@@ -151,7 +151,7 @@ namespace Fall
 		file.close();
 	}
 
-	void File::closeAndThrow(std::string const & message)
+	void File::closeAndThrow(const std::string & message)
 	{
 		close();
 		throw Exception(message);

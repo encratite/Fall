@@ -22,4 +22,5 @@ done
 
 outputPath=$outputDirectory/lib$output.a
 echo Building $outputPath
+rm $outputPath
 ar -cq $outputPath$objects

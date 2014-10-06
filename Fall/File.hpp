@@ -19,10 +19,10 @@ namespace Fall
 	{
 	public:
 		File();
-		File(std::string const & path, FileOpenMode mode);
+		File(const std::string & path, FileOpenMode mode);
 		~File();
 
-		void open(std::string const & path, FileOpenMode mode);
+		void open(const std::string & path, FileOpenMode mode);
 		void close();
 
 		void read(char * buffer, std::size_t size);
@@ -30,7 +30,7 @@ namespace Fall
 		std::string read(std::size_t size);
 
 		void write(char const * buffer, std::size_t size);
-		void write(std::string const & data);
+		void write(const std::string & data);
 
 		void seekBegin();
 		void seekEnd();
@@ -38,12 +38,12 @@ namespace Fall
 		long getPosition();
 		void setPosition(long position);
 
-		static void readFile(std::string const & path, std::string & output);
+		static void readFile(const std::string & path, std::string & output);
 
 	private:
 		FILE * _file;
 
 		void checkFileDescriptor();
-		void closeAndThrow(std::string const & message);
+		void closeAndThrow(const std::string & message);
 	};
 }

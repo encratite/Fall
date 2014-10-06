@@ -1,33 +1,69 @@
 #pragma once
 
 #include <string>
+#include <sstream>
 #include <map>
 
 #include <Fall/Exception.hpp>
 
 namespace Fall
 {
+	typedef std::map<std::string, std::string> ConfigurationMap;
+	
 	class Configuration
 	{
 	public:
-		Configuration(std::string const & path);
+		Configuration(const std::string & path);
 
-		std::string getString(std::string const & key) const;
-		std::string getString(std::string const & key, std::string const & defaultValue) const;
+		std::string getString(const std::string & key) const;
+		std::string getString(const std::string & key, const std::string & defaultValue) const;
 
-		int getInt(std::string const & key) const;
-		int getInt(std::string const & key, int defaultValue) const;
+		bool getBool(const std::string & key) const;
+		bool getBool(const std::string & key, bool defaultValue) const;
+		
+		template <typename NumericType>
+			NumericType getNumber(const std::string & key) const
+		{
+			NumericType output;
+			if (!tryGetNumber<NumericType>(key, output))
+				throw Exception("Unable to find numeric value in configuration file: " + key);
+			return output;
+		}
 
-		bool getBool(std::string const & key) const;
-		bool getBool(std::string const & key, bool defaultValue) const;
+		template <typename NumericType>
+			NumericType getNumber(const std::string & key, NumericType defaultValue) const
+		{
+			NumericType output;
+			if (!tryGetNumber<NumericType>(key, output))
+				return defaultValue;
+			return output;
+		}
 
 	private:
-		std::map<std::string, std::string> _values;
+		ConfigurationMap _values;
 
-		void readConfigurationFile(std::string const & path);
+		void readConfigurationFile(const std::string & path);
 
-		bool tryGetString(std::string const & key, std::string & output) const;
-		bool tryGetInt(std::string const & key, int & output) const;
-		bool tryGetBool(std::string const & key, bool & output) const;
+		bool tryGetString(const std::string & key, std::string & output) const;
+		bool tryGetBool(const std::string & key, bool & output) const;
+
+		
+		template <typename NumericType>
+			bool tryGetNumber(const std::string & key, NumericType & output) const
+		{
+			std::string numberString;
+			if (!tryGetString(key, numberString))
+				return false;
+			try
+			{
+				std::stringstream stream(numberString);
+				stream >> output;
+				return true;
+			}
+			catch (...)
+			{
+				throw Exception("Invalid numeric value for key \"" + key + "\" in configuration file: " + numberString);
+			}
+		}
 	};
 }

@@ -9,9 +9,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Configuration">
-      <UniqueIdentifier>{4dfd0f95-ff88-45fa-9cea-056d32b99a3a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Test\Configuration\ConfigurationTest.cpp">
@@ -19,8 +16,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Test\Configuration\configuration">
-      <Filter>Configuration</Filter>
-    </None>
+    <None Include="Configuration.conf" />
   </ItemGroup>
 </Project>

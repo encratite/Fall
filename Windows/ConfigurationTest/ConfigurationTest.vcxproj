@@ -19,10 +19,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Test\Configuration\configuration">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Text</FileType>
-    </None>
+    <None Include="Configuration.conf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D50F93F7-13EB-4683-9B21-6EBD347DA050}</ProjectGuid>
@@ -83,7 +80,8 @@
       <Message>Copying configuration file</Message>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>copy ..\..\Test\Configuration\configuration ..\..\Windows\Debug</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

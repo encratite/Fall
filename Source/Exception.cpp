@@ -7,13 +7,18 @@ namespace Fall
 	{
 	}
 	
-	Exception::Exception(std::string const & message):
+	Exception::Exception(const std::string & message):
 		_message(message)
 	{
 	}
 
-	std::string const & Exception::getMessage() const
+	const std::string & Exception::getMessage() const
 	{
 		return _message;
+	}
+
+	const char * Exception::what() const
+	{
+		return _message.c_str();
 	}
 }
