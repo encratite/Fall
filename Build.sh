@@ -12,7 +12,7 @@ do
 	outputFile=$(basename $sourceFile | cut -d. -f1).o
 	object=$objectDirectory/$outputFile
 	echo Building $sourceFile
-	g++ -c $sourceFile -o $object -fPIC -std=c++11 -Wall -I.
+	g++ -c $sourceFile -o $object -fPIC -std=c++11 -g -Wall -I.
 	if [[ $? != 0 ]]
 	then
 		exit
