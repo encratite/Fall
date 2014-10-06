@@ -1,5 +1,7 @@
 #include <Fall/Configuration.hpp>
 
+#include <Fall/String.hpp>
+
 int main()
 {
 	Fall::Configuration configuration("Configuration.conf");

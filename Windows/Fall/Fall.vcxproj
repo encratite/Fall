@@ -80,11 +80,13 @@
     <ClCompile Include="..\..\Source\Configuration.cpp" />
     <ClCompile Include="..\..\Source\Exception.cpp" />
     <ClCompile Include="..\..\Source\File.cpp" />
+    <ClCompile Include="..\..\Source\String.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Fall\Configuration.hpp" />
     <ClInclude Include="..\..\Fall\Exception.hpp" />
     <ClInclude Include="..\..\Fall\File.hpp" />
+    <ClInclude Include="..\..\Fall\String.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,6 @@
-#include <regex>
-
 #include <Fall/Configuration.hpp>
 #include <Fall/File.hpp>
+#include <Fall/String.hpp>
 
 namespace Fall
 {
@@ -53,16 +52,27 @@ namespace Fall
 		{
 			return;
 		}
-		std::regex regex("^\\s*?(\\w+)(?: (.+?))?\r?$", std::regex_constants::ECMAScript);
-		std::sregex_iterator begin(content.begin(), content.end(), regex);
-		std::sregex_iterator end;
-		for (auto i = begin; i != end; i++)
+		std::stringstream stream(content);
+		std::string line;
+		while (std::getline(stream, line))
 		{
-			auto const & match = *i;
-			const std::string & key = match[1];
-			const std::string & value = match[2];
-			if (_values.find(key) != _values.end())
-				throw Exception("Encountered multiple definitions of key \"" + key + "\"");
+			line = trim(line);
+			if (line.empty() || line[0] == '#')
+				continue;
+			std::string key, value;
+			std::size_t index = line.find(' ');
+			if (index != std::string::npos)
+			{
+				key = line.substr(0, index);
+				key = trim(key);
+				if (key.empty())
+					throw Exception("Encountered an empty key in a configuration file");
+				value = line.substr(index + 1);
+			}
+			else
+			{
+				key = line;
+			}
 			_values[key] = value;
 		}
 	}
