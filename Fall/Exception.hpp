@@ -5,7 +5,7 @@
 
 namespace Fall
 {
-	class Exception
+	class Exception: public std::exception
 	{
 	public:
 		Exception();
@@ -13,7 +13,7 @@ namespace Fall
 
 		const std::string & getMessage() const;
 
-		const char * what() const;
+		const char * what() const noexcept;
 
 	protected:
 		std::string _message;

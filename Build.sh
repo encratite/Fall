@@ -12,14 +12,15 @@ do
 	outputFile=$(basename $sourceFile | cut -d. -f1).o
 	object=$objectDirectory/$outputFile
 	echo Building $sourceFile
-	g++ -c $sourceFile -o $object -fPIC -std=c++11 -g -Wall -I.
+	g++ -std=c++11 -static -g -Wall -I. -c $sourceFile -o $object
 	if [[ $? != 0 ]]
 	then
-		exit
+		exit 1
 	fi
 	objects="$objects $object"
 done
 
 outputPath=$outputDirectory/lib$output.a
 echo Building $outputPath
+
 ar rcs $outputPath$objects

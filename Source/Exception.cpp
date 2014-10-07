@@ -17,7 +17,7 @@ namespace Fall
 		return _message;
 	}
 
-	const char * Exception::what() const
+	const char * Exception::what() const noexcept
 	{
 		return _message.c_str();
 	}
