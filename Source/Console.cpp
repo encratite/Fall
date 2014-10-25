@@ -2,6 +2,7 @@
 #include <mutex>
 
 #include <Fall/Console.hpp>
+#include <Fall/Time.hpp>
 
 namespace
 {
@@ -19,5 +20,10 @@ namespace Fall
 	void writeLine(const std::string & text)
 	{
 		write(text + "\n");
+	}
+	
+	void log(const std::string & text)
+	{
+		writeLine(timestamp() + " " + text);
 	}
 }
